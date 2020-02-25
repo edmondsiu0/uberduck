@@ -25,7 +25,7 @@ azList = []
 summary = []
 sortedSummary = []
 
-session = boto3.Session(profile_name='faws_playground_edmond')
+session = boto3.Session()
 client = session.client('ec2', region_name='us-east-1')
 
 if quick is False:
