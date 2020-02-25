@@ -1,3 +1,21 @@
+#######################################################################################################################
+# whichRegion.py
+# Author:  @uberduck
+# Created: 25 Feburary 2020
+# Last modified: 25 Feburary 2020
+# Source URL:
+#
+# This script iterate through all current AWS regions, and provide a list of AWS regions with active resources deployed.
+# Default behaviour of this script is to query all AWS regions, but this can be slow and excessive.
+# This behaviour can be modified by specifying --quick option which limits the regions queried to a predefined list.
+#
+# If no options are specified, the output does not display regions with no active resources.
+# This behaviour can be overridden by the --debug option.
+#
+# usage: python3 whichRegion.py [--quick|--debug]
+#
+
+
 import boto3
 
 # Defining variables
@@ -7,7 +25,7 @@ azList = []
 summary = []
 sortedSummary = []
 
-session = boto3.Session()
+session = boto3.Session(profile_name='faws_playground_edmond')
 client = session.client('ec2', region_name='us-east-1')
 
 if quick is False:
